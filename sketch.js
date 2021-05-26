@@ -348,7 +348,7 @@ let n;
 let randomSeed = 0;
 
 let xoffP2, yoffP2
-let xP1, yP1, xP3, yP3
+let xP1, yP1, xP3, yP3,xP4, yP4
 
 let img;
 
@@ -389,6 +389,8 @@ function setup() {
   yP3 = height / 2
   xP1 = width / 2
   yP1 = height / 2
+  xP4 = random(width / 2)
+  yP4 = height / 2
 }
 
 function draw() {
@@ -402,7 +404,10 @@ function draw() {
   // rect(0, 0, 1000, 764);
 
   
-
+  let posP4 = rWalk(xP4, yP4, 30 / 2)
+  minaPixel(15, posP4.x, posP4.y, 100, 50, 40, random(2,4))
+  xP4 = posP4.x
+  yP4 = posP4.y
 
   let posP3 = rWalk(xP3, yP3, 10)
   myPixel_Perlin(10,posP3.x, posP3.y, random(20,150), 50);
@@ -423,6 +428,7 @@ function draw() {
   xP1 = posP1.x
   yP1 = posP1.y
 
+  
   ambientLight(255);
   //ambientMaterial(255,255,255)
   // Add a point light to the scene
@@ -688,6 +694,74 @@ function myPixel_Perlin(myPatternWidth, centerX, centerY, regionWidth, regionHei
     yoff += 0.1;
   }
   zoff += 0.1;
+}
+
+function minaPixel(myPatternWidth, centerX, centerY, regionWidth, regionHeight, strokeAlpha, myStrokeWeightMult) {
+
+
+  let xStart = floor(centerX - regionWidth / 2);
+  let yStart = floor(centerY - regionHeight / 2);
+
+  let xEnd = floor(centerX + regionWidth / 2);
+  let yEnd = floor(centerY + regionHeight / 2);
+
+
+  for (let y = yStart; y <= yEnd; y = y + myPatternWidth) {
+
+    for (let x = xStart; x <= xEnd; x = x + myPatternWidth) {
+
+      let index = (x + (y * width)) * 4;
+      let pr = img.pixels[index];
+      let pg = img.pixels[index + 1];
+      let pb = img.pixels[index + 2];
+      let pa = img.pixels[index + 3];
+      // if (pa === 0) {
+      //   pr = 255;
+      //   pg = 255;
+      //   pb = 255;
+      //   pa= 255;
+      // }
+      let c = color(pr, pg, pb, pa)
+
+      let b = map(brightness(c), 0, 255, 0.1, myStrokeWeightMult);
+
+      
+      //pgraphics.push(); //for style
+     // pgraphics.colorMode(RGB, 255);
+     // noFill();
+     pgraphics.push()
+     pgraphics.colorMode(RGB, 255);
+    // pgraphics.fill(255,2)
+     //pgraphics.stroke(pr, pg, pb, strokeAlpha);
+     //pgraphics.strokeWeight(b * myStrokeWeightMult);
+     
+     
+     pgraphics.strokeWeight(b);
+     pgraphics.stroke(c, strokeAlpha);
+     pgraphics.fill(c, 1);
+
+     pgraphics.beginShape();
+     pgraphics.vertex( myPatternWidth+x, y);
+     pgraphics.vertex(myPatternWidth+x, myPatternWidth+y);
+     pgraphics.vertex( myPatternWidth*3/2+x, myPatternWidth+y);
+     pgraphics.vertex( myPatternWidth*2+x, myPatternWidth*3/2+y);
+     pgraphics.vertex(myPatternWidth/2+x, myPatternWidth*3/2+y);
+     pgraphics.vertex(x, myPatternWidth*2+y);
+     pgraphics.vertex(x, myPatternWidth+y);
+     pgraphics.endShape(CLOSE);
+
+     pgraphics.line(x, myPatternWidth+y, myPatternWidth+x, myPatternWidth*3/2+y);
+     pgraphics.line(myPatternWidth+x, myPatternWidth*3/2+y, myPatternWidth*2+x, myPatternWidth*3/2+y);
+     
+     
+     
+     
+     
+     
+
+      pgraphics.pop(); //for style
+    }
+  }
 }
 
 
