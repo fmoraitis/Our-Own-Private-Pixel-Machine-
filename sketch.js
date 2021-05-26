@@ -357,20 +357,20 @@ let cam
 let imgCam
 let pgraphics
 function preload() {
-  img = loadImage('data/patt04.png');
+  img = loadImage('data/monokeros.jpg');
 }
 
 function setup() {
-  mycanvas = createCanvas(1000, 764,WEBGL);
+  mycanvas = createCanvas(640, 960,WEBGL);
   mycanvas.parent("sketch");
   
   //uncomment this for cam version
   // cam=createCapture(VIDEO)
-  // cam.size(1000, 764)
+  // cam.size(1000, 764)640, 960
   // cam.hide();
   // cam.parent("sketch");
  
-  pgraphics= createGraphics(1000, 764)
+  pgraphics= createGraphics(640, 960)
   
   noStroke();
   
@@ -442,7 +442,7 @@ function draw() {
   texture(pgraphics);
   
   // Use a box for the texture
-  plane(1000,764);
+  plane(640, 960);
 
 
 }
