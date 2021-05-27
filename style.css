@@ -18,6 +18,8 @@
   align-items:center;
   height:100vh;
   z-index: -1;
+  /* padding: 12em;  */
+  
 }
 
 #videoCam{
@@ -29,7 +31,7 @@
 }
 
 
-.CenterMe {
+/* .CenterMe {
   background-color: rgb(255, 255, 255);
   color: #000000;
   font-family: 'Oswald', sans-serif;
@@ -39,4 +41,79 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-content: flex-start;
+  } */
+
+  /* .textCont{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    height: 200px;
+    display: flex;
+    align-items: right;
+    justify-content: flex-start;
+    }
+   */
+
+   .wrapper {
+    /* font-family: 'Oswald', sans-serif; */
+    font-size: 2rem;
+    
+    height: 200px;
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center; 
+   
+  }
+  
+  .wrapper > * {
+    
+    padding: 10px;
+    flex: 1 100%;
+  }
+  
+  .header {
+    text-transform: uppercase;
+    background: rgb(255, 255, 255);
+    padding:10px;
+    margin-top: auto;
+  }
+  
+  .footer {
+    background: rgb(255, 255, 255);
+  }
+  
+  .main {
+    font-size: 1rem;
+    /* text-transform: lowercase; */
+    text-align: left;
+    background: rgb(255, 255, 255);
+    font-weight:initial;
+  }
+  
+  .aside-1 {
+    background: rgb(255, 255, 255);
+  }
+  
+  .aside-2 {
+    background: rgb(255, 255, 255);
+  }
+  
+  @media all and (min-width: 600px) {
+    .aside { flex: 1 0 0; }
+  }
+  
+  @media all and (min-width: 800px) {
+    .main    { flex: 3 0px; }
+    .aside-1 { order: 1; } 
+    .main    { order: 2; }
+    .aside-2 { order: 3; }
+    .footer  { order: 4; }
+  }
+  
+  body {
+    padding: 2em; 
   }
