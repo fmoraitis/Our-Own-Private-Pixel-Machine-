@@ -410,7 +410,7 @@ function draw() {
   yP4 = posP4.y
 
   let posP3 = rWalk(xP3, yP3, 10)
-  myPixel_Perlin(10,posP3.x, posP3.y, random(20,150), 50);
+  myPixel_Perlin(10,posP3.x, posP3.y, random(50,150), 50);
   myPixel_02(30, posP3.x, posP3.y, 80, 90,90, 2);
   // console.log( posP3)
   xP3 = posP3.x
@@ -418,7 +418,7 @@ function draw() {
 
   
   let posP2 = pWalk(xoffP2, yoffP2)
-  myPixel_Perlin(10, posP2.x, posP2.y, 50, 25);
+  myPixel_Perlin(20, posP2.x, posP2.y, 70, 70);
   xoffP2 += 0.001;
   yoffP2 += 0.001;
 
